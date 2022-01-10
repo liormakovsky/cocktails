@@ -5,20 +5,17 @@ import { useGlobalContext } from '../context'
 
 const CocktailList = () => {
 
-  const { cocktails } = useGlobalContext();
-  
+  const { cocktails, loading } = useGlobalContext();
 
-  if (cocktails == null) {
-    return (
-      <>
-        <Loading />
-      </>
-    )
+  if (loading) {
+    return <Loading />
   }
 
-  if (cocktails.length === 0) {
+  if (cocktails.length < 1) {
     return (
-      <h2 className="section-title">No Cocktails Matched Your Search Criteria</h2>
+      <h2 className='section-title'>
+        no cocktails matched your search criteria
+      </h2>
     )
   }
 

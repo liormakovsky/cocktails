@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect,useCallback } from 'react'
+import React, { useState, useContext, useEffect, useCallback } from 'react'
 
 const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s='
 const AppContext = React.createContext()
@@ -10,21 +10,16 @@ const AppProvider = ({ children }) => {
   const [cocktails, setCocktails] = useState([])
 
 
-  const fetchDrinks = useCallback( async () => {
+  const fetchDrinks = useCallback(async () => {
     setLoading(true)
     try {
       const response = await fetch(`${url}${searchTerm}`)
       const data = await response.json()
       const { drinks } = data;
-      if(drinks){
+
+      if (drinks) {
         const newCocktails = drinks.map((item) => {
-          const {
-            idDrink,
-            strDrink,
-            strDrinkThumb,
-            strAlcoholic,
-            strGlass,
-          } = item
+          const { idDrink, strDrink, strDrinkThumb, strAlcoholic, strGlass } = item
 
           return {
             id: idDrink,
@@ -35,7 +30,7 @@ const AppProvider = ({ children }) => {
           }
         })
         setCocktails(newCocktails)
-      }else{
+      } else {
         setCocktails([])
       }
       setLoading(false)
@@ -43,11 +38,11 @@ const AppProvider = ({ children }) => {
       console.log("error", error);
       setLoading(false)
     }
-  },[searchTerm]);
+  }, [searchTerm]);
 
   useEffect(() => {
     fetchDrinks()
-  }, [searchTerm,fetchDrinks])
+  }, [searchTerm, fetchDrinks])
 
   return (
     <AppContext.Provider
