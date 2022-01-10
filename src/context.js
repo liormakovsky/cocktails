@@ -11,6 +11,7 @@ const AppProvider = ({ children }) => {
 
   const [searchTerm, setSearchTerm] = useState('a');
 
+
   const fetchCocktails = async () => {
     try {
       const response = await fetch(url + searchTerm);
@@ -26,7 +27,7 @@ const AppProvider = ({ children }) => {
     fetchCocktails();
   }, [])
 
-  return <AppContext.Provider value={cocktails}>{children}</AppContext.Provider>
+  return <AppContext.Provider value={{ cocktails, searchTerm, setSearchTerm }}>{children}</AppContext.Provider>
 }
 
 export const useGlobalContext = () => {
