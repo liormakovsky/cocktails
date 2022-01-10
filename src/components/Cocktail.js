@@ -1,17 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Cocktail = ({ strDrinkThumb, strDrink, strGlass, strAlcoholic }) => {
+const Cocktail = ({id, image, name, glass, info }) => {
+
   return (
     <article className="cocktail">
       <div className="img-container">
-        <img src={strDrinkThumb} alt={strDrink}></img>
+        <img src={image} alt={name}></img>
       </div>
       <div className="cocktail-footer">
-        <h3>{strDrink}</h3>
-        <h4>{strGlass}</h4>
-        <p>{strAlcoholic}</p>
-        <a className="btn btn-primary btn-details" href="/cocktail/17222">details</a>
+        <h3>{name}</h3>
+        <h4>{glass}</h4>
+        <p>{info}</p>
+        <a className="btn btn-primary btn-details" href={`/cocktail/${id}`}>details</a>
       </div>
     </article>
   )

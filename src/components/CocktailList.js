@@ -6,8 +6,9 @@ import { useGlobalContext } from '../context'
 const CocktailList = () => {
 
   const { cocktails } = useGlobalContext();
+  
 
-  if (cocktails.length === 0) {
+  if (cocktails == null) {
     return (
       <section className="section">
         <h2 className="section-title">cocktails</h2>
@@ -18,7 +19,7 @@ const CocktailList = () => {
     )
   }
 
-  if (cocktails.drinks == null) {
+  if (cocktails.length === 0) {
     return (
       <section className="section">
         <h2 className="section-title">cocktails</h2>
@@ -33,9 +34,9 @@ const CocktailList = () => {
     < section className="section" >
       <h2 className="section-title">cocktails</h2>
       <div className="cocktails-center">
-        {cocktails.drinks.map((cocktail) => {
+        {cocktails.map((cocktail) => {
           return (
-            <Cocktail {...cocktail} key={cocktail.idDrink} />
+            <Cocktail {...cocktail} key={cocktail.id} />
           )
         })}
       </div>
