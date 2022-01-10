@@ -9,23 +9,15 @@ const CocktailList = () => {
 
   if (cocktails.length === 0) {
     return (
-      <section className="section">
-        <h2 className="section-title">cocktails</h2>
-        <div className="cocktails-center">
-          <Loading />
-        </div>
-      </section>
+      <>
+        <Loading />
+      </>
     )
   }
 
   if (cocktails.drinks == null) {
     return (
-      <section className="section">
-        <h2 className="section-title">cocktails</h2>
-        <div className="cocktails-center">
-          <h1>No Cocktails Matched Your Search Criteria</h1>
-        </div>
-      </section>
+      <h2 className="section-title">No Cocktails Matched Your Search Criteria</h2>
     )
   }
 
